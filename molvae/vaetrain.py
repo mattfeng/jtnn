@@ -69,6 +69,8 @@ for epoch in xrange(MAX_EPOCH):
     word_acc,topo_acc,assm_acc,steo_acc = 0,0,0,0
 
     for it, batch in enumerate(dataloader):
+        # prepare training data
+        #   1. figure out which subgraphs are valid at each node in the tree
         for mol_tree in batch:
             for node in mol_tree.nodes:
                 if node.label not in node.cands:
